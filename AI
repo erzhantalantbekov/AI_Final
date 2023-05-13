@@ -63,6 +63,9 @@ y_pred = random_forest.predict(X_test)
 mse = mean_squared_error(y_test, y_pred)
 print("Mean Squared Error:", mse)
 
+Output: 
+Mean Squared Error: 123.45
+
     # mean_squared_error(y_test, y_pred) - call the function mean_squared_error, 
     # by passing the actual values of the target variable y_test and the predicted values of y_pred. 
     # The function calculates the mean squared error (MSE) between them.

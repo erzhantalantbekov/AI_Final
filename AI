@@ -1,0 +1,73 @@
+staggering instructions: 
+
+1. Import the necessary libraries:
+
+import pandas as pd
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error
+
+    # pandas is a data library that allows you to load and process a data set.
+    # RandomForestRegressor - a class from scikit-learn library to build a random forest model.
+    # train_test_split - function from scikit-learn for splitting data into training and test sets.
+    # mean_squared_error - function from scikit-learn for calculating mean square error (MSE).
+
+2. Data download:
+
+data_url = "https://gist.githubusercontent.com/perlineanisha/5a4f4401b6af0204927637b4fff0e2e7/raw/56a41457915a9a84a6c496e3e8034f90f44de6e1/company.csv"
+data = pd.read_csv(data_url)
+
+    # data_url is a variable that contains a reference to the dataset.
+    # pd.read_csv(data_url) is a read_csv function from the pandas library, 
+    #The pandas library's read_csv function # loads data from a CSV file by a specified link and converts it 
+    # into a DataFrame object, which is the main data structure in pandas.
+
+3. Splitting the data into attributes (X) and target variable (y):
+
+X = data.drop("Sales", axis=1)
+y = data["Sales"]
+
+    # data.drop("Sales", axis=1) - the drop method allows to remove the "Sales" column 
+    # from the DataFrame data and return a new DataFrame, which will contain only attributes (X).
+    # data["Sales"] - call "Sales" column in DataFrame data, the result 
+    # will be a Series (one-dimensional data array) which will contain the target variable (y).
+
+4. Splitting the data into training and test sets:
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# train_test_split(X, y, test_size=0.2, random_state=42) - the train_test_split function divides the data
+# into training and test sets. Here we specify that 20% of the data will be used for testing
+# (test_size=0.2), and random_state=42 sets the seed for generating random numbers so that the data split is reproducible.
+
+5. Creating and training a random forest model:
+
+random_forest = RandomForestRegressor(n_estimators=100, random_state=42)
+random_forest.fit(X_train, y_train)
+
+# RandomForestRegressor(n_estimators=100, random_state=42) - create an instance of the random 
+# forest with 100 trees (n_estimators=100) and set random_state=42 for reproducibility.
+# random_forest.fit(X_train, y_train) - call the fit method on the random_forest model object, 
+# by passing the training data X_train and the corresponding target values y_train. This trains 
+# model on the data provided.
+
+6. Prediction on a test data set:
+
+y_pred = random_forest.predict(X_test)
+
+# random_forest.predict(X_test) - call the predict method on the random_forest model object, 
+# passing test data to X_test. The model predicts the target variable for the test data set.
+
+7. Estimation of the model using the root mean square error (MSE):
+
+mse = mean_squared_error(y_test, y_pred)
+print("Mean Squared Error:", mse)
+
+# mean_squared_error(y_test, y_pred) - call the function mean_squared_error, 
+# by passing the actual values of the target variable y_test and the predicted values of y_pred. 
+# The function calculates the mean squared error (MSE) between them.
+# print("Mean Squared Error:", mse) - print the MSE value to the screen.
+
+# Thus, this code performs all the necessary steps to build a random forest model, 
+# training it on the training dataset, predicting it on the test dataset, and estimating the model 
+# using the root mean square error (MSE).

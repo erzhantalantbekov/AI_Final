@@ -36,38 +36,38 @@ y = data["Sales"]
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# train_test_split(X, y, test_size=0.2, random_state=42) - the train_test_split function divides the data
-# into training and test sets. Here we specify that 20% of the data will be used for testing
-# (test_size=0.2), and random_state=42 sets the seed for generating random numbers so that the data split is reproducible.
+    # train_test_split(X, y, test_size=0.2, random_state=42) - the train_test_split function divides the data
+    # into training and test sets. Here we specify that 20% of the data will be used for testing
+    # (test_size=0.2), and random_state=42 sets the seed for generating random numbers so that the data split is reproducible.
 
 5. Creating and training a random forest model:
 
 random_forest = RandomForestRegressor(n_estimators=100, random_state=42)
 random_forest.fit(X_train, y_train)
 
-# RandomForestRegressor(n_estimators=100, random_state=42) - create an instance of the random 
-# forest with 100 trees (n_estimators=100) and set random_state=42 for reproducibility.
-# random_forest.fit(X_train, y_train) - call the fit method on the random_forest model object, 
-# by passing the training data X_train and the corresponding target values y_train. This trains 
-# model on the data provided.
+    # RandomForestRegressor(n_estimators=100, random_state=42) - create an instance of the random 
+    # forest with 100 trees (n_estimators=100) and set random_state=42 for reproducibility.
+    # random_forest.fit(X_train, y_train) - call the fit method on the random_forest model object, 
+    # by passing the training data X_train and the corresponding target values y_train. This trains 
+    # model on the data provided.
 
 6. Prediction on a test data set:
 
 y_pred = random_forest.predict(X_test)
 
-# random_forest.predict(X_test) - call the predict method on the random_forest model object, 
-# passing test data to X_test. The model predicts the target variable for the test data set.
+    # random_forest.predict(X_test) - call the predict method on the random_forest model object, 
+    # passing test data to X_test. The model predicts the target variable for the test data set.
 
 7. Estimation of the model using the root mean square error (MSE):
 
 mse = mean_squared_error(y_test, y_pred)
 print("Mean Squared Error:", mse)
 
-# mean_squared_error(y_test, y_pred) - call the function mean_squared_error, 
-# by passing the actual values of the target variable y_test and the predicted values of y_pred. 
-# The function calculates the mean squared error (MSE) between them.
-# print("Mean Squared Error:", mse) - print the MSE value to the screen.
+    # mean_squared_error(y_test, y_pred) - call the function mean_squared_error, 
+    # by passing the actual values of the target variable y_test and the predicted values of y_pred. 
+    # The function calculates the mean squared error (MSE) between them.
+    # print("Mean Squared Error:", mse) - print the MSE value to the screen.
 
-# Thus, this code performs all the necessary steps to build a random forest model, 
-# training it on the training dataset, predicting it on the test dataset, and estimating the model 
-# using the root mean square error (MSE).
+    # Thus, this code performs all the necessary steps to build a random forest model, 
+    # training it on the training dataset, predicting it on the test dataset, and estimating the model 
+    # using the root mean square error (MSE).
